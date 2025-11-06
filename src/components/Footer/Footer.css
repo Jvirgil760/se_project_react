@@ -1,0 +1,19 @@
+.footer {
+    /*   width: 1358px; */
+    height: 20px;
+    top: 1040px;
+    left: 40px;
+    margin-top: auto;
+    color: #000000;
+}
+
+.footer__copyright {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.footer span {
+    margin-left: auto;
+}
+  
