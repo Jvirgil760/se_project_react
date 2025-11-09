@@ -3,7 +3,7 @@ import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ModalwithForm from "../ModalwithForm/ModalwithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
@@ -45,7 +45,7 @@ function App() {
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
       </div>
-      <ModalwithForm
+      <ModalWithForm
         title="New garment"
         buttonText="Add garment"
         activeModal={activeModal === "add-garment"}
@@ -87,7 +87,7 @@ function App() {
             <input id="cold" type="radio" className="modal__radio-input" /> Cold
           </label>
         </fieldset>
-      </ModalwithForm>
+      </ModalWithForm>
       <ItemModal
         activeModal={activeModal}
         card={selectedCard}
