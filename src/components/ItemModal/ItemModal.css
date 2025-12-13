@@ -42,3 +42,10 @@
 .modal__close_type_image {
     background-image: url("/src/images/Close2.svg")
 }
+
+.modal__delete-button {
+    width: 98.12px;
+    height: 13.62px;
+    top: 628.6px;
+    left: 837.32px;
+}

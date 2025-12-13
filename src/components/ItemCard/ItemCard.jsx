@@ -11,9 +11,13 @@ function ItemCard({ item, onCardClick }) {
       <img
         onClick={handleCardClick}
         className="card__image"
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
       />
+      <div className="card__title-and-like">
+        <p className="card__title">{item.name}</p>
+        <button type="button" className="card__like-button" />
+      </div>
     </li>
   );
 }

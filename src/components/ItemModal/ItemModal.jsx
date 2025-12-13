@@ -1,18 +1,38 @@
 import "./ItemModal.css";
 
-function ItemModal({ activeModal, onClose, card }) {
+function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
+  if (!card) {
+    return;
+  }
+
+  const handleDeleteClick = () => {
+    // guard in case card is missing
+    if (!card || !card._id) return;
+    onDeleteItem(card._id);
+  };
+
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
-        <button onClick={onClose} type="button" className="modal__close">
-        </button>
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <button
+          onClick={onClose}
+          type="button"
+          className="modal__close"
+        ></button>
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather:{card.weather}</p>
-        </div>
+          <button
+          type="button"
+          className="modal__delete-button"
+          onClick={handleDeleteClick}
+        >
+          Delete item
+        </button>
       </div>
     </div>
+  </div>
   );
 }
 

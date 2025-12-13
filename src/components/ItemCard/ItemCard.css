@@ -1,33 +1,36 @@
 .card {
+  width: 325px;
+  height: 328px;
   position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
+  padding: 0;
+  border-radius: 32px;
+  background-color: #f3f3f3;
+  box-shadow: 0 0 0 1px #e0e0e0;
   display: flex;
-  justify-content: center;
-  background-color: #e9e9e9;
-  width: 100%;
-  height: 100%;
+  flex-direction: column;
   align-items: center;
+  grid-template-columns: repeat(4, 325px);
+  justify-content: space-between;
+}
+
+/* main clothing image */
+.card__image {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* title + like icon row at the top */
+.card__title-and-like {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 16px;
 }
 
 .card__name {
-  padding: 2px 12px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.2;
-  color: rgba(0, 0, 0, 0.6);
-  background-color: white;
-  border-radius: 4px;
-  margin: 0 10px 0 0;
-  max-width: 200px;
+  font-weight: 600;
   position: absolute;
-  top: 20px;
-}
-
-.card__image {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-  cursor: pointer;
+  font-size: 16px;
 }

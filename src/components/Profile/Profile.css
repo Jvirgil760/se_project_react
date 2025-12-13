@@ -1,0 +1,19 @@
+.profile {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 80px 80px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 80px;         /* space between sidebar and cards */
+}
+
+.profile__info {
+  margin-top: 80px; /* push it down from header */
+  text-align: center;
+}
+
+.profile__avatar {
+  display: block;
+  margin: 16px auto;
+}
