@@ -47,12 +47,23 @@ const Header = ({ weatherData, handleAddClick }) => {
           >
             + Add clothes
           </button>
-          <NavLink className="header__nav-link" to="/profile" >
+          <Link to="/profile" className="header__profile-link">
             <div className="header__profile">
-              <p className="header__user-name">{username}</p>
-              <img src={avatar} alt={username} className="header__avatar" />
+              <div className="header__user-name">{username}</div>
+
+              {avatar ? (
+                <img
+                  className="header__avatar"
+                  src={avatar || avatarDefault}
+                  alt="User avatar"
+                />
+              ) : (
+                <span className="header__avatar sidebar__avatar_none">
+                  {username?.toUpperCase().charAt(0) || ""}
+                </span>
+              )}
             </div>
-          </NavLink>
+          </Link>
         </nav>
 
         {/* mobile controls (ok to leave for now, won’t show on desktop) */}
