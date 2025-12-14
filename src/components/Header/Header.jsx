@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
@@ -27,10 +27,12 @@ const Header = ({ weatherData, handleAddClick }) => {
       <div className="header__container">
         {/* TODO -- link to home page */}
         <div className="header__left">
-          <img className="header__logo" src={logo} alt="WTWR logo" />
-          <p className="header__date-and-location">
-            {currentDate}, {weatherData.city}
-          </p>
+          <Link to="/" className="header__home-link">
+            <img className="header__logo" src={logo} alt="WTWR logo" />
+            <p className="header__date-and-location">
+              {currentDate}, {weatherData.city}
+            </p>
+          </Link>
         </div>
 
         <nav
@@ -47,23 +49,12 @@ const Header = ({ weatherData, handleAddClick }) => {
           >
             + Add clothes
           </button>
-          <Link to="/profile" className="header__profile-link">
+          <NavLink className="header__nav-link" to="/profile">
             <div className="header__profile">
-              <div className="header__user-name">{username}</div>
-
-              {avatar ? (
-                <img
-                  className="header__avatar"
-                  src={avatar || avatarDefault}
-                  alt="User avatar"
-                />
-              ) : (
-                <span className="header__avatar sidebar__avatar_none">
-                  {username?.toUpperCase().charAt(0) || ""}
-                </span>
-              )}
+              <p className="header__user-name">{username}</p>
+              <img src={avatar} alt={username} className="header__avatar" />
             </div>
-          </Link>
+          </NavLink>
         </nav>
 
         {/* mobile controls (ok to leave for now, won’t show on desktop) */}
