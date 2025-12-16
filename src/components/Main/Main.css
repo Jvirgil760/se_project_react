@@ -35,7 +35,13 @@
 }
 
 .cards__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 323px); /* 4 cards per row */
+  gap: 20px; /* space between cards */
+
+  justify-content: center; /* centers the whole grid block */
 }

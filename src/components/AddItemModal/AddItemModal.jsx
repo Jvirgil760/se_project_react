@@ -28,7 +28,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           type="text"
           name="name"
           className="modal__input"
-          id="clothing-name"
+          id="name"
           placeholder="Name"
           required
           value={values.name}
@@ -41,7 +41,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           type="url"
           name="imageUrl"
           className="modal__input modal__input_type_url"
-          id="clothing-imageUrl"
+          id="imageUrl"
           placeholder="Image URL"
           value={values.imageUrl}
           onChange={handleChange}

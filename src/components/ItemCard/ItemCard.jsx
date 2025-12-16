@@ -14,10 +14,6 @@ function ItemCard({ item, onCardClick }) {
         src={item.imageUrl}
         alt={item.name}
       />
-      <div className="card__title-and-like">
-        <p className="card__title">{item.name}</p>
-        <button type="button" className="card__like-button" />
-      </div>
     </li>
   );
 }

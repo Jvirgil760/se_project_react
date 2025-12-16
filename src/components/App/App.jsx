@@ -127,10 +127,9 @@ function App() {
           onAddItem={onAddItem}
         />
         <ItemModal
-          activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
-          isOpen={activeModal === "add-garment"}
+          isOpen={activeModal === "preview"}
           onDeleteItem={handleDeleteItem}
         /> 
       </div>

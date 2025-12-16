@@ -15,8 +15,11 @@
 
 /* main clothing image */
 .card__image {
-  width: 100%;
-  object-fit: contain;
+  width: 323px;
+  height: 100%;
+  top: 279px;
+  left: 40px;
+  border-radius: 19px;
 }
 
 /* title + like icon row at the top */
