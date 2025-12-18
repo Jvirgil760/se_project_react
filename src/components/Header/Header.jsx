@@ -29,10 +29,10 @@ const Header = ({ weatherData, handleAddClick }) => {
         <div className="header__left">
           <Link to="/" className="header__home-link">
             <img className="header__logo" src={logo} alt="WTWR logo" />
-            <p className="header__date-and-location">
-              {currentDate}, {weatherData.city}
-            </p>
           </Link>
+          <p className="header__date-and-location">
+            {currentDate}, {weatherData.city}
+          </p>
         </div>
 
         <nav

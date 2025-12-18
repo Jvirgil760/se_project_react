@@ -1,4 +1,3 @@
-import { handleServerResponse } from "../utils/api";
 
 const baseUrl = "http://localhost:3001";
 
@@ -6,7 +5,7 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-const handleServerResponse = (res) => {
+export const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 

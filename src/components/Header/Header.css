@@ -4,7 +4,6 @@
 
 /* this is what centers the entire header row like in the video */
 .header__container {
-  max-width: 880px;          /* adjust to match your design if needed */
   margin: 0 auto;            /* center horizontally */
   padding: 24px 0;
   display: flex;
@@ -16,14 +15,23 @@
 .header__left {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 .header__logo {
   display: block;
+  width: 89px;
+  height: 40px;
 }
 
 .header__date-and-location {
+  text-decoration: none;
+  width: 160px;
+  height: 24px;
+  font-style: Bold;
+  font-family: Cabinet Grotesk, sans-serif;
+  top: 11px;
+  left: 113px;
   margin: 0;
   font-size: 14px;
 }

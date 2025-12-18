@@ -8,6 +8,26 @@
 /* row with the “Text” + BUTTON above the cards */
 .clothes-section__row {
   display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.clothes-section__row p {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 1; /* prevent default browser spacing */
+}
+
+.clothes-section__add-button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 /* the grid of cards */
