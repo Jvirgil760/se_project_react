@@ -3,10 +3,19 @@ import { Link, NavLink } from "react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import avatarDefault from "../../assets/avatar.svg";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const Header = ({ weatherData, handleAddClick }) => {
+const Header = ({
+  weatherData,
+  handleAddClick,
+  isLoggedIn,
+  onRegisterClick,
+  onLoginClick,
+  onLogout,
+}) => {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
+  const currentUser = useContext(CurrentUserContext);
 
   if (!weatherData) return null;
 
@@ -15,9 +24,6 @@ const Header = ({ weatherData, handleAddClick }) => {
     day: "numeric",
   });
 
-  const username = "Terrence Tegegne";
-  const avatar = avatarDefault;
-
   const handleMobileMenuClick = () => {
     setIsMobileMenuOpened(!isMobileMenuOpened);
   };
@@ -25,7 +31,6 @@ const Header = ({ weatherData, handleAddClick }) => {
   return (
     <header className="header">
       <div className="header__container">
-        {/* TODO -- link to home page */}
         <div className="header__left">
           <Link to="/" className="header__home-link">
             <img className="header__logo" src={logo} alt="WTWR logo" />
@@ -42,22 +47,63 @@ const Header = ({ weatherData, handleAddClick }) => {
         >
           <ToggleSwitch />
 
-          <button
-            onClick={handleAddClick}
-            type="button"
-            className="header__add-button"
-          >
-            + Add clothes
-          </button>
-          <NavLink className="header__nav-link" to="/profile">
-            <div className="header__profile">
-              <p className="header__user-name">{username}</p>
-              <img src={avatar} alt={username} className="header__avatar" />
-            </div>
-          </NavLink>
+          {isLoggedIn ? (
+            <>
+              <button
+                onClick={handleAddClick}
+                type="button"
+                className="header__add-button"
+              >
+                + Add clothes
+              </button>
+
+              <NavLink className="header__nav-link" to="/profile">
+                <div className="header__profile">
+                  <p className="header__user-name">{currentUser.name}</p>
+
+                  {currentUser.avatar ? (
+                    <img
+                      src={currentUser.avatar}
+                      alt={currentUser.name}
+                      className="header__avatar"
+                    />
+                  ) : (
+                    <div className="header__avatar header__avatar-placeholder">
+                      {currentUser.name?.[0]?.toUpperCase() || ""}
+                    </div>
+                  )}
+                </div>
+              </NavLink>
+
+              <button
+                type="button"
+                className="header__auth-button"
+                onClick={onLogout}
+              >
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                className="header__auth-button"
+                onClick={onRegisterClick}
+              >
+                Sign Up
+              </button>
+
+              <button
+                type="button"
+                className="header__auth-button"
+                onClick={onLoginClick}
+              >
+                Log In
+              </button>
+            </>
+          )}
         </nav>
 
-        {/* mobile controls (ok to leave for now, won’t show on desktop) */}
         {isMobileMenuOpened && (
           <button
             type="button"

@@ -13,10 +13,12 @@ export const getItems = () => {
   return fetch("http://localhost:3001/items").then(handleServerResponse);
 };
 
-export function addItem({ name, imageUrl, weather }) {
+export function addItem({ name, imageUrl, weather }, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers,
+    headers: {
+    authorization: `Bearer ${token}`,
+  },
     body: JSON.stringify({
       name,
       imageUrl,
@@ -25,11 +27,12 @@ export function addItem({ name, imageUrl, weather }) {
   }).then(handleServerResponse);
 }
 
-export const removeItem = (id) => {
+export const removeItem = (id, token) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
 };
@@ -38,4 +41,35 @@ export const getWeather = ({ latitude, longitude }, apiKey) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
   ).then(handleServerResponse);
+};
+
+export const updateUserProfile = ({ name, avatar }, token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(handleServerResponse);
+};
+
+export const addCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};
+
+export const removeCardLike = (id, token) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
 };

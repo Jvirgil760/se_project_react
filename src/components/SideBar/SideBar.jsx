@@ -1,26 +1,35 @@
 import "./SideBar.css";
 import avatarDefault from "../../assets/avatar.svg";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-export default function SideBar() {
-  const username = "Terrence Tegegne";
-  const avatar = avatarDefault;
+export default function SideBar({ onEditProfile, onLogout }) {
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <aside className="sidebar">
       <div className="sidebar__profile">
-        <div className="sidebar__user-name">{username}</div>
-        {avatar ? (
+        {currentUser.avatar ? (
           <img
             className="sidebar__avatar"
-            src={avatar || avatarDefault}
-            alt="user avatar"
+            src={currentUser.avatar || avatarDefault}
+            alt={currentUser.name}
           />
         ) : (
-          <span className="sidebar__avatar sidebar__avatar_none">
-            {username?.toUpperCase().charAt(0) || ""}
+          <span className="sidebar__avatar sidebar__avatar_no-image">
+            {currentUser.name?.toUpperCase().charAt(0) || ""}
           </span>
         )}
+
+        <p className="sidebar__user-name">{currentUser.name}</p>
       </div>
+      <button type="button" onClick={onEditProfile}>
+        Change profile data
+      </button>
+
+      <button type="button" onClick={onLogout}>
+        Log out
+      </button>
     </aside>
   );
 }
