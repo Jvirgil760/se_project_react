@@ -16,7 +16,7 @@ export default function SideBar({ onEditProfile, onLogout }) {
             alt={currentUser.name}
           />
         ) : (
-          <span className="sidebar__avatar sidebar__avatar_no-image">
+          <span className="sidebar__avatar sidebar__avatar_none">
             {currentUser.name?.toUpperCase().charAt(0) || ""}
           </span>
         )}

@@ -41,7 +41,7 @@
 }
 
 .modal__close_type_image {
-  background-image: url("/src/images/Close2.svg");
+  background-image: url("../../assets/Close2.svg");
 }
 
 .modal__delete-button {

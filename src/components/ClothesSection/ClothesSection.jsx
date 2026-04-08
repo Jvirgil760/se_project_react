@@ -9,9 +9,12 @@ export default function ClothesSection({ clothingItems, onCardClick, onAddClick 
         <button className="clothes-section__add-button" onClick={onAddClick} >+ Add new</button>
       </div>
       <ul className="clothes-section__items">
-        {(clothingItems || []).map((item) => (
+      {(clothingItems || [])
+        .filter((item) => item.owner === currentUser._id)
+        .map((item) => (
           <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
-        ))}
+        ))
+      }
       </ul>
     </div>
   );

@@ -13,6 +13,7 @@ function Profile({ clothingItems, onCardClick, onEditProfile, onLogout, onCardLi
       <SideBar onEditProfile={onEditProfile} onLogout={onLogout} />
       <ClothesSection
         clothingItems={clothingItems}
+        onAddClick={onAddClick}
         onCardClick={onCardClick}
         onCardLike={onCardLike}
         isLoggedIn={isLoggedIn}

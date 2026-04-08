@@ -91,16 +91,16 @@ function App() {
   const onAddItem = (inputValues) => {
     const newCardData = {
       name: inputValues.name,
-      imageUrl: inputValues.imageUrl,       
+      imageUrl: inputValues.imageUrl,
       weather: inputValues.weather, 
     };
 
   const token = localStorage.getItem("jwt");
     
   // Call the API
-    addItem(newCardData)
+    addItem(newCardData, token)
       .then((data) => {
-        setClothingItems([data, ...clothingItems, ]);
+        setClothingItems([data, ...clothingItems ]);
         closeActiveModal();
       })
       .catch(console.error);
@@ -185,7 +185,7 @@ function App() {
     if (!token) return;
 
     checkToken(token)
-      .then(() => {
+      .then((userData) => {
         setCurrentUser(userData);
         setIsLoggedIn(true);
       })
@@ -230,6 +230,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  onAddClick={handleAddClick}
                   onEditProfile={handleEditProfileClick}
                   onLogout={handleLogout}
                   onCardLike={handleCardLike}
