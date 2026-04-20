@@ -1,7 +1,7 @@
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal({ isOpen, onClose, onLogin }) {
+function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
   const defaultValues = {
     email: "",
     password: "",
@@ -23,7 +23,10 @@ function LoginModal({ isOpen, onClose, onLogin }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       buttonText="Log In"
+      secondaryButtonText=" or Sign up"
+      onSwitch={onSwitchToRegister}
     >
+      
       <label className="modal__label" htmlFor="login-email">
         Email
         <input

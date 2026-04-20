@@ -1,7 +1,7 @@
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal({ isOpen, onClose, onRegister }) {
+function RegisterModal({ isOpen, onClose, onRegister, onSwitchToLogin }) {
   const defaultValues = {
     name: "",
     avatar: "",
@@ -25,6 +25,8 @@ function RegisterModal({ isOpen, onClose, onRegister }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       buttonText="Sign Up"
+      secondaryButtonText=" or Log In"
+      onSwitch={onSwitchToLogin}
     >
       <label className="modal__label" htmlFor="register-name">
         Name

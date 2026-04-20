@@ -17,6 +17,7 @@ export function addItem({ name, imageUrl, weather }, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
+      ...headers,
     authorization: `Bearer ${token}`,
   },
     body: JSON.stringify({

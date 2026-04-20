@@ -131,7 +131,7 @@ function App() {
         setCurrentUser(userData);
         setIsLoggedIn(true);
         setIsRegisterModalOpen(false);
-        navigate("/profile");
+        navigate("/");
       })
       .catch(console.error);
   };
@@ -146,9 +146,19 @@ function App() {
         setCurrentUser(userData);
         setIsLoggedIn(true);
         setIsLoginModalOpen(false);
-        navigate("/profile");
+        navigate("/");
       })
       .catch(console.error);
+  };
+
+  const handleSwitchToRegister = () => {
+    setIsLoginModalOpen(false);
+    setIsRegisterModalOpen(true);
+  };
+
+  const handleSwitchToLogin = () => {
+    setIsRegisterModalOpen(false);
+    setIsLoginModalOpen(true);
   };
 
   const handleLogout = () => {
@@ -253,16 +263,19 @@ function App() {
           onClose={closeActiveModal}
           isOpen={activeModal === "preview"}
           onDeleteItem={handleDeleteItem}
+          isLoggedIn={isLoggedIn}
         />
         <RegisterModal
           isOpen={isRegisterModalOpen}
           onClose={() => setIsRegisterModalOpen(false)}
           onRegister={handleRegister}
+          onSwitchToLogin={handleSwitchToLogin}
         />
         <LoginModal
           isOpen={isLoginModalOpen}
           onClose={() => setIsLoginModalOpen(false)}
           onLogin={handleLogin}
+          onSwitchToRegister={handleSwitchToRegister}
         />
         <EditProfileModal
           isOpen={activeModal === "edit-profile"}

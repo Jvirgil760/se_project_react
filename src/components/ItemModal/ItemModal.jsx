@@ -2,7 +2,7 @@ import "./ItemModal.css";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ItemModal({ isOpen, onClose, card, onDeleteItem }) {
+function ItemModal({ isOpen, onClose, card, onDeleteItem, isLoggedIn }) {
   const currentUser = useContext(CurrentUserContext);
   
   if (!card) {
@@ -32,7 +32,7 @@ function ItemModal({ isOpen, onClose, card, onDeleteItem }) {
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
 
-          {isOwn && (
+          {isLoggedIn && isOwn && (
             <button
               type="button"
               className="modal__delete-button"

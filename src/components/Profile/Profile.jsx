@@ -6,7 +6,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 
 
-function Profile({ clothingItems, onCardClick, onEditProfile, onLogout, onCardLike, isLoggedIn, }) {
+function Profile({ clothingItems, onCardClick, onAddClick, onEditProfile, onLogout, onCardLike, isLoggedIn, }) {
   const currentUser = useContext(CurrentUserContext);
   return (
     <main className="profile">
