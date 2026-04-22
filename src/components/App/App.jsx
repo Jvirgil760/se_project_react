@@ -88,22 +88,30 @@ function App() {
       .catch(console.error);
   };
 
-  const onAddItem = (inputValues) => {
-    const newCardData = {
-      name: inputValues.name,
-      imageUrl: inputValues.imageUrl,
-      weather: inputValues.weather, 
-    };
+function handleSubmit(request) {
+  setIsLoading(true);
+  request()
+    .then(closeActiveModal)
+    .catch(console.error)
+    .finally(() => setIsLoading(false));
+}
 
-  const token = localStorage.getItem("jwt");
-    
-  // Call the API
-    addItem(newCardData, token)
-      .then((data) => {
-        setClothingItems([data, ...clothingItems ]);
-        closeActiveModal();
-      })
-      .catch(console.error);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onAddItem = (inputValues) => {
+    const makeRequest = () => {
+      const newCardData = {
+        name: inputValues.name,
+        imageUrl: inputValues.imageUrl,
+        weather: inputValues.weather,
+      };
+      const token = localStorage.getItem("jwt");
+      
+      return addItem(newCardData, token).then((data) => {
+        setClothingItems([data.data, ...clothingItems]);
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleDeleteItem = (id) => {
@@ -207,6 +215,23 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
+  
+    const handleEscClose = (e) => {  // define the function inside useEffect not to lose the reference on rerendering
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+  
+    document.addEventListener("keydown", handleEscClose);
+  
+    return () => {  // don't forget to add a clean up function for removing the listener
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);  // watch activeModal here
+  
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentTemperatureUnitContext.Provider
@@ -254,9 +279,10 @@ function App() {
           <Footer />
         </div>
         <AddItemModal
-          onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"} // true
           onAddItem={onAddItem}
+          onClose={closeActiveModal}
+          buttonText={isLoading ? 'Saving...' : 'Save'}
         />
         <ItemModal
           card={selectedCard}
@@ -267,15 +293,17 @@ function App() {
         />
         <RegisterModal
           isOpen={isRegisterModalOpen}
-          onClose={() => setIsRegisterModalOpen(false)}
           onRegister={handleRegister}
+          onClose={() => setIsRegisterModalOpen(false)}
           onSwitchToLogin={handleSwitchToLogin}
+          buttonText={isLoading ? 'Saving...' : 'Save'}
         />
         <LoginModal
           isOpen={isLoginModalOpen}
-          onClose={() => setIsLoginModalOpen(false)}
           onLogin={handleLogin}
+          onClose={() => setIsLoginModalOpen(false)}
           onSwitchToRegister={handleSwitchToRegister}
+          buttonText={isLoading ? 'Saving...' : 'Save'}
         />
         <EditProfileModal
           isOpen={activeModal === "edit-profile"}

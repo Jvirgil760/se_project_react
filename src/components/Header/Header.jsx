@@ -74,14 +74,6 @@ const Header = ({
                   )}
                 </div>
               </NavLink>
-
-              <button
-                type="button"
-                className="header__auth-button"
-                onClick={onLogout}
-              >
-                Log Out
-              </button>
             </>
           ) : (
             <>
