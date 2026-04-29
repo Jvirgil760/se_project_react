@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./ToggleSwitch.css";
 
@@ -7,32 +7,24 @@ export default function ToggleSwitch() {
     CurrentTemperatureUnitContext
   );
 
+  const [isChecked, setisChecked] =useState(currentTemperatureUnit==="C");
+  useEffect(
+    ()=>setisChecked(currentTemperatureUnit==="C"),[currentTemperatureUnit]
+  )
+
   return (
-    <label className="toggle-switch">
-      <input
-        onChange={handleToggleSwitchChange}
-        type="checkbox"
-        className="toggle-switch__checkbox"
-      />
-      <span className="toggle-switch__circle"></span>
-      <span
-        className={`toggle-switch__text toggle-switch__text_F ${
-          currentTemperatureUnit === "F"
-            ? "toggle-switch__text_color_white"
-            : ""
-        }`}
-      >
-        F
-      </span>
-      <span
-        className={`toggle-switch__text toggle-switch__text_C ${
-          currentTemperatureUnit === "C"
-            ? "toggle-switch__text_color_white"
-            : ""
-        }`}
-      >
-        C
-      </span>
-    </label>
+    <div className="toggle-switch">
+      <label className="toggle-switch__label">
+        <input
+          className="toggle-switch_checkbox toggle-switch__checkbox_state_hidden"
+          type="checkbox"
+          name="toggle-switch-checkbox"
+          value={currentTemperatureUnit}
+          onChange={handleToggleSwitchChange}
+          checked={isChecked}
+        />
+        <span className="toggle-switch__checkbox toggle-switch__checkbox_state_visible" />
+      </label>
+    </div>
   );
 }

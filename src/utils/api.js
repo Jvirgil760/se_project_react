@@ -29,7 +29,7 @@ export function addItem({ name, imageUrl, weather }, token) {
       imageUrl,
       weather,
     }),
-  }).then(handleServerResponse);
+  });
 }
 
 export const removeItem = (id, token) => {
@@ -39,7 +39,7 @@ export const removeItem = (id, token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(handleServerResponse);
+  });
 };
 
 export const updateUserProfile = ({ name, avatar }, token) => {
@@ -50,7 +50,7 @@ export const updateUserProfile = ({ name, avatar }, token) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then(handleServerResponse);
+  });
 };
 
 export const addCardLike = (id, token) => {
@@ -60,7 +60,7 @@ export const addCardLike = (id, token) => {
       ...headers,
       authorization: `Bearer ${token}`,
     },
-  }).then(handleServerResponse);
+  });
 };
 
 export const removeCardLike = (id, token) => {
@@ -70,5 +70,5 @@ export const removeCardLike = (id, token) => {
       ...headers,
       authorization: `Bearer ${token}`,
     },
-  }).then(handleServerResponse);
+  });
 };

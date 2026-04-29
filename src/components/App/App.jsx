@@ -107,10 +107,10 @@ function handleSubmit(request) {
       };
       const token = localStorage.getItem("jwt");
       
-      return addItem(newCardData, token).then((data) => {
-        setClothingItems([data.data, ...clothingItems]);
-      });
-    };
+      return addItem(newCardData, token).then((newItem) => {
+      setClothingItems((prevItems) => [newItem, ...prevItems]);
+    });
+  };
     handleSubmit(makeRequest);
   };
 

@@ -1,49 +1,31 @@
-.modal {
-  display: flex;
-  flex-direction: column;
-}
-
 .modal__content_type_image {
   max-width: 498px;
   max-height: 610px;
-  margin-top: 120px;
   width: 100%;
-  border-radius: 20px;
-  background-color: #d9d9d9;
+  margin-top: 120px;
   padding: 0;
+  border-radius: 20px;
+  background: #fff;
+  overflow: hidden;
 }
 
 .modal__image {
+  display: block;
+  width: 100%;
   max-width: 498px;
   max-height: 498px;
-  width: 100%;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-.modal__caption {
-  margin: 0;
-  font-family: "Cabinet Grotesk", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-}
-
-.modal__weather {
-  margin: 0;
-  font-family: "Cabinet Grotesk", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .modal__footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  box-sizing: border-box;
+  width: 100%;
   padding: 20px 32px 32px;
-  background: white;
-  border-radius: 0 0 16px 16px;
+  background: #fff;
 }
 
 .modal__info {
@@ -52,19 +34,37 @@
   gap: 12px;
 }
 
-.modal__close_type_image {
-  background-image: url("../../assets/Close2.svg");
+.modal__caption {
+  margin: 0;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.modal__weather {
+  margin: 0;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
 }
 
 .modal__delete-button {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    color: #ff4d00;
-    font-family: "Cabinet Grotesk", Arial, sans-serif;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 700;
-    cursor: pointer;
+  flex-shrink: 0;
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  color: rgba(255, 77, 0, 1);
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modal__delete-button:hover {
+  opacity: 0.7;
 }

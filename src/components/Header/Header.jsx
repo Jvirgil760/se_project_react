@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
+import avatarDefault from "../../assets/avatar.svg"
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
@@ -23,6 +24,9 @@ const Header = ({
     month: "long",
     day: "numeric",
   });
+
+  const username = "Terrence Teggene";
+  const avatar = avatarDefault;
 
   const handleMobileMenuClick = () => {
     setIsMobileMenuOpened(!isMobileMenuOpened);

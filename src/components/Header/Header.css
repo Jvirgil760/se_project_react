@@ -51,7 +51,7 @@
 .header__add-button {
   border: none;
   background: transparent;
-  font: inherit;
+  font: Cabinet Grotesk, sans-serif;
   cursor: pointer;
   padding: 0;
 }
