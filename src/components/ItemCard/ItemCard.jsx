@@ -26,7 +26,7 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
 
   return (
     <li className="card">
-      <div className="card__header">
+      <div className="card__title-and-like">
         <h2 className="card__name">{item.name}</h2>
 
         {isLoggedIn && (
@@ -34,10 +34,11 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
             type="button"
             className={itemLikeButtonClassName}
             onClick={handleLike}
+            aria-label="Like item"
           />
         )}
       </div>
-      
+
       <img
         onClick={handleCardClick}
         className="card__image"

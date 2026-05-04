@@ -46,12 +46,19 @@
 .header__nav-link {
   color: black;
   text-decoration: none;
+  font-family: Cabinet Grotesk, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .header__add-button {
   border: none;
   background: transparent;
-  font: Cabinet Grotesk, sans-serif;
+  font-family: Cabinet Grotesk, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
   cursor: pointer;
   padding: 0;
 }

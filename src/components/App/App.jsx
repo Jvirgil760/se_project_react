@@ -82,7 +82,7 @@ function App() {
     request
       .then((updatedCard) => {
         setClothingItems((cards) =>
-          cards.map((card) => (card._id === item._id ? updatedCard : card))
+          cards.map((card) => (card._id === item._id ? updatedCard.data : card))
         );
       })
       .catch(console.error);
@@ -108,7 +108,7 @@ function handleSubmit(request) {
       const token = localStorage.getItem("jwt");
       
       return addItem(newCardData, token).then((newItem) => {
-      setClothingItems((prevItems) => [newItem, ...prevItems]);
+      setClothingItems((prevItems) => [newItem.data, ...prevItems]);
     });
   };
     handleSubmit(makeRequest);
@@ -252,7 +252,6 @@ function handleSubmit(request) {
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
-                  currentTemperatureUnit={currentTemperatureUnit}
                   onCardLike={handleCardLike}
                   isLoggedIn={isLoggedIn}
                 />

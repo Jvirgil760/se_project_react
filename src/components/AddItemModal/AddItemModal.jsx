@@ -1,5 +1,6 @@
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useEffect } from "react";
 
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   const defaultValues = {
@@ -7,12 +8,19 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     imageUrl: "",
     weather: "",
   };
-  const { values, handleChange } = useForm(defaultValues);
+  const { values, handleChange, setValues } = useForm(defaultValues);
 
- function handleSubmit(evt) {
-   evt.preventDefault();
-   onAddItem(values);
- }
+  useEffect(() => {
+    if (isOpen) {
+      setValues(defaultValues);
+    }
+  }, [isOpen, setValues]);
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onAddItem(values);
+  }
+
   return (
     <ModalWithForm
       title="New garment"
